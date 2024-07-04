@@ -26,6 +26,9 @@ android {
             )
             buildConfigField("String", "arm" , "\"arm64-release\"")
         }
+        create("debugDev"){
+
+        }
         debug {
             isMinifyEnabled = false
             proguardFiles(
@@ -88,7 +91,10 @@ android {
 }
 
 dependencies {
-
+    debugImplementation(libs.gson)
+    debugApi(libs.gson)
+    "debugDevImplementation"(libs.glide)
+    "debugDevImplementation"(libs.glide)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

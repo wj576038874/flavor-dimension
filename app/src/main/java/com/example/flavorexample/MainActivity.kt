@@ -32,6 +32,38 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.tv4).text = BuildConfig.arm
 
+        /**
+         *     buildTypes {
+         *         release {
+         *             isMinifyEnabled = false
+         *             proguardFiles(
+         *                 getDefaultProguardFile("proguard-android-optimize.txt"),
+         *                 "proguard-rules.pro"
+         *             )
+         *             buildConfigField("String", "arm" , "\"arm64-release\"")
+         *         }
+         *         create("debugDev"){
+         *              isMinifyEnabled = false
+         *         }
+         *         debug {
+         *             isMinifyEnabled = false
+         *             proguardFiles(
+         *                 getDefaultProguardFile("proguard-android-optimize.txt"),
+         *                 "proguard-rules.pro"
+         *             )
+         *         }
+         *     }
+         * 跟buildTypes有关系 和flavor没关系 buildTypes默认自带debug和release
+         * 所以可以直接使用 debugImplementation releaseImplementation debugApi releaseApi debugXxx... releaseXxx...
+         * 如果新增 其他构建模式比如 debugDev 那么依赖需要用 字符串包裹，buildType+依赖
+         * "debugDevImplementation"(libs.glide)
+         * "debugDevApi"(libs.glide)
+         * "debugDevXxx..."(libs.glide)
+         * [可参照官网说明](https://developer.android.com/build/build-variants?hl=zh-cn#dependencies)
+         *
+         */
 
+        //debugImplementation(libs.gson) 切换到debug构建 才可以访问Gson()
+        //"debugDevImplementation"(libs.glide) 切换到debugDev 才可以访问Glide.with(this)
     }
 }
