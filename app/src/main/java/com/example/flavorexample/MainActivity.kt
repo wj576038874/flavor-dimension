@@ -7,6 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
+import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +64,7 @@ class MainActivity : AppCompatActivity() {
          * [可参照官网说明](https://developer.android.com/build/build-variants?hl=zh-cn#dependencies)
          *
          */
-
+//        Glide.with(this)
         //debugImplementation(libs.gson) 切换到debug构建 才可以访问Gson()
         //"debugDevImplementation"(libs.glide) 切换到debugDev 才可以访问Glide.with(this)
     }

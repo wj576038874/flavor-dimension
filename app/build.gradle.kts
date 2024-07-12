@@ -24,9 +24,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "arm" , "\"arm64-release\"")
+            buildConfigField("String", "arm", "\"arm64-release\"")
         }
-        create("debugDev"){
+        create("debugDev") {
 
         }
         debug {
@@ -55,26 +55,26 @@ android {
     flavorDimensions.add("channel")
 //    flavorDimensions.add("server")
     productFlavors {
-        create("kenya"){
+        create("kenya") {
             dimension = "channel"
             applicationIdSuffix = ".kenya"
             manifestPlaceholders["CHANNEL"] = "kenya"
             manifestPlaceholders["label"] = "kenya"
-            buildConfigField("String", "arm" , "\"arm64-kenya-debug\"")
+            buildConfigField("String", "arm", "\"arm64-kenya-debug\"")
         }
-        create("china"){
+        create("china") {
             dimension = "channel"
             applicationIdSuffix = ".china"
             manifestPlaceholders["CHANNEL"] = "china"
             manifestPlaceholders["label"] = "china"
-            buildConfigField("String", "arm" , "\"arm64-china-debug\"")
+            buildConfigField("String", "arm", "\"arm64-china-debug\"")
         }
-        create("uganda"){
+        create("uganda") {
             dimension = "channel"
             applicationIdSuffix = ".uganda"
             manifestPlaceholders["CHANNEL"] = "uganda"
             manifestPlaceholders["label"] = "uganda"
-            buildConfigField("String", "arm" , "\"arm64-uganda-debug\"")
+            buildConfigField("String", "arm", "\"arm64-uganda-debug\"")
         }
 //        create("cc"){
 //            dimension = "server"
@@ -90,11 +90,15 @@ android {
 
 }
 
+val debugDevImplementation = configurations.getByName("debugDevImplementation")
+
+
 dependencies {
     debugImplementation(libs.gson)
     debugApi(libs.gson)
     "debugDevImplementation"(libs.glide)
-    "debugDevImplementation"(libs.glide)
+    debugDevImplementation(libs.glide)
+    debugDevImplementation(libs.gson)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
