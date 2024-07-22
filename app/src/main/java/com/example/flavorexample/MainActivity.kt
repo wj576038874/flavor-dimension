@@ -4,6 +4,7 @@ import Utils
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.tv2).text = packageManager.getApplicationLabel(appInfo)
 
-        Utils
+        Toast.makeText(this, Utils.getData(), Toast.LENGTH_SHORT).show()
 
         val appInfo2 = packageManager.getApplicationInfo(packageName ,  PackageManager.GET_META_DATA)
         findViewById<TextView>(R.id.tv3).text = appInfo2.metaData?.getString("CHANNEL")
