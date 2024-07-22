@@ -76,6 +76,13 @@ android {
             manifestPlaceholders["label"] = "uganda"
             buildConfigField("String", "arm", "\"arm64-uganda-debug\"")
         }
+        create("mexico"){
+            dimension = "channel"
+            applicationIdSuffix = ".mexico"
+            manifestPlaceholders["CHANNEL"] = "mexico"
+            manifestPlaceholders["label"] = "mexico"
+            buildConfigField("String", "arm", "\"arm64-uganda-debug\"")
+        }
 //        create("cc"){
 //            dimension = "server"
 //        }

@@ -1,5 +1,6 @@
 package com.example.flavorexample
 
+import Utils
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.TextView
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.tv2).text = packageManager.getApplicationLabel(appInfo)
 
+        Utils
 
         val appInfo2 = packageManager.getApplicationInfo(packageName ,  PackageManager.GET_META_DATA)
         findViewById<TextView>(R.id.tv3).text = appInfo2.metaData?.getString("CHANNEL")
