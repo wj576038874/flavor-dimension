@@ -30,6 +30,7 @@ android {
 
         }
         debug {
+            applicationIdSuffix = ".new"
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -67,7 +68,7 @@ android {
             applicationIdSuffix = ".china"
             manifestPlaceholders["CHANNEL"] = "china"
             manifestPlaceholders["label"] = "china"
-            buildConfigField("String", "arm", "\"arm64-china-debug\"")
+            buildConfigField("String", "arm", """"arm64-china-debug"""")
         }
         create("uganda") {
             dimension = "channel"
@@ -92,7 +93,18 @@ android {
     }
 
     android.applicationVariants.configureEach {
+        //打包任务分组
         println("####$flavorName ${buildType.name}")
+        val buildType = buildType.name
+        val flavors = productFlavors[0].name
+        val buildTypeUpperCase =
+            buildType.substring(0, 1).uppercase() + buildType.substring(1)
+        val flavorsUpperCase =
+            flavors.substring(0, 1).uppercase() + flavors.substring(1)
+        val currentTaskName = "assemble${flavorsUpperCase}${buildTypeUpperCase}"
+        println("####$currentTaskName")
+//        tasks.getByName(currentTaskName).group = "packApkTask"
+        tasks.named(currentTaskName).get().group = "apkpack-$buildType"
     }
 
 }
