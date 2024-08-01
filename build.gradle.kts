@@ -3,3 +3,9 @@ plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.jetbrains.kotlin.android) apply false
 }
+tasks.register("clean", Delete::class.java) {
+    println("开始执行clean方法")
+    delete(rootProject.buildDir)
+    delete("${rootProject.projectDir.path}/apk")
+    println("结束执行clean方法")
+}
